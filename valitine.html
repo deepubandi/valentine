@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Dearest Love ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #fff1f5, #fce7f3);
+  text-align:center;
+  color:#6b214a;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+h1{
+  font-size:40px;
+  margin-bottom:10px;
+  color:#b83280;
+}
+
+.subtitle{
+  font-style:italic;
+  color:#a8557a;
+}
+
+button{
+  padding:14px 32px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.start-btn{
+  background:linear-gradient(to right, #f9a8d4, #fbcfe8);
+  color:#6b214a;
+  margin-top:40px;
+  font-weight:bold;
+}
+
+.floating-heart{
+  position:fixed;
+  color:#f472b6;
+  font-size:24px;
+  animation:floatUp 2s linear forwards;
+}
+
+@keyframes floatUp{
+  0%{opacity:1; transform:translateY(0);}
+  100%{opacity:0; transform:translateY(-200px);}
+}
+
+.card{
+  background:#fff7fb;
+  border-radius:22px;
+  padding:40px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+#page2,#page3{display:none;}
+
+#yes{
+  background:linear-gradient(to right, #fb7185, #fda4af);
+  color:white;
+  font-weight:bold;
+}
+
+#no{
+  background:#e5e7eb;
+  color:#444;
+  position:absolute;
+}
+
+.hearts{
+  color:#f472b6;
+  font-size:22px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="container" id="page1">
+  <h1>❤️ My Dearest Love ❤️</h1>
+  <p class="subtitle">A Valentine’s Journey</p>
+
+  <p>
+    I’ve prepared something special for you.  
+    Click below and discover a message written  
+    from my heart to yours 💕
+  </p>
+
+  <button class="start-btn" onclick="goNext()">Begin Our Journey 💖</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container" id="page2">
+
+  <div style="font-size:26px; color:#ff4081;">
+    ✨ ❤️ ✨
+  </div>
+
+  <h1 style="color:#c2185b; font-weight:bold;">
+    You Complete Me
+  </h1>
+
+  <div class="card">
+    
+    <h3 style="color:#ff4081;">✨ A MESSAGE FOR YOU ✨</h3>
+    <p>
+       My dearest Venki,
+    </p>
+
+    <p>
+      Every moment with you reminds me  
+      why I fell in love with you.  
+      Your kindness, your smile,  
+      the way you make everything better…
+    </p>
+
+    <p>
+      This Valentine’s Day, I just want you  
+      to know that you are my safe place,  
+      my happiness, and my forever 💕
+    </p>
+
+    <p style="font-size:22px; color:#c2185b; font-style:italic;">
+      I love you more than words could ever express.
+    </p>
+
+    <p style="text-align:right; font-weight:bold;">
+      Forever yours,<br>
+      Deepu 💕
+    </p>
+  </div>
+
+  <br><br>
+  <button class="start-btn" onclick="goFinal()">Continue 💗</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="container" id="page3">
+  <h1>Will you be my Valentine? 💞</h1>
+
+  <div class="hearts">❤️ ❤️ ❤️ ❤️ ❤️</div><br>
+
+  <button id="yes" onclick="yesClick()">YES 💖</button>
+  <button id="no" onmouseover="moveNo()">NO 😜</button>
+</div>
+
+<script>
+function goNext(){
+  page1.style.display="none";
+  page2.style.display="block";
+}
+
+function goFinal(){
+  page2.style.display="none";
+  page3.style.display="block";
+}
+
+function moveNo(){
+  let x=Math.random()*(window.innerWidth-100);
+  let y=Math.random()*(window.innerHeight-100);
+  no.style.left=x+"px";
+  no.style.top=y+"px";
+}
+
+function yesClick(){
+  for(let i=0;i<30;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="floating-heart";
+    heart.style.left=Math.random()*window.innerWidth+"px";
+    heart.style.top=Math.random()*window.innerHeight+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),2000);
+  }
+
+  setTimeout(()=>{
+    document.body.innerHTML=`
+    <div class="container">
+      <h1>Yayyy 😍❤️</h1>
+      <p>You just made my Valentine’s Day perfect 💕</p>
+      <p>I’m the happiest person right now 💖</p>
+    </div>`;
+  },2000);
+}
+
+
+</script>
+
+</body>
+</html>
